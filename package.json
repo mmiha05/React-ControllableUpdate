@@ -1,0 +1,40 @@
+{
+  "name": "react-controllable-update",
+  "version": "1.0.7",
+  "description": "Controll if component should be allowed to be updated - a replacement for shouldComponentUpdate for functional components",
+  "main": "dist/index.js",
+  "peerDependencies": {
+    "react": "^16.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "react": "^16.13.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmiha05/React-ControllableUpdate.git"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "update",
+    "hooks",
+    "functional"
+  ],
+  "author": "mmiha05",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmiha05/React-ControllableUpdate/issues"
+  },
+  "homepage": "https://github.com/mmiha05/React-ControllableUpdate#readme"
+}
