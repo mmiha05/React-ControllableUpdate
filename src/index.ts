@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
-const ControllableUpdate = (props) => {
+const ControllableUpdate: React.FC = (props: any) => {
   const [shouldUpdateState, setShouldUpdateState] = useState(
     props.shouldUpdate
   );

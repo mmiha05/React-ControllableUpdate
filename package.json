@@ -3,8 +3,10 @@
   "version": "2.0.0",
   "description": "Controll if component should be updated",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^17.0.0",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -29,7 +31,7 @@
     "jest": "^27.1.0",
     "prettier": "^2.3.2",
     "pretty-quick": "^3.1.1",
-    "react": "^16.13.1",
+    "react": "^17.0.0",
     "react-dom": "^17.0.2",
     "terser-webpack-plugin": "^5.2.3",
     "ts-loader": "^9.2.5",
@@ -39,9 +41,14 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "npx webpack --config webpack.config.js",
-    "format": "npx prettier --write .",
-    "prepare": "husky install"
+    "bundle": "npx webpack --config webpack.config.js",
+    "format": "npx prettier . --check",
+    "tsc-check": "npx tsc --noEmit",
+    "lint": "eslint src/* --max-warnings 0",
+    "check": "npm run format && npm run tsc-check && npm run lint && npm test",
+    "ts-declare": "tsc src/index.ts --declaration --emitDeclarationOnly --outfile index.d.ts",
+    "build": "npm run check && npm run bundle",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
