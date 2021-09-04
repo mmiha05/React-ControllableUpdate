@@ -1,4 +1,4 @@
-import { useEffect, useRef, FC, ReactNode } from "react";
+import { useRef, FC, ReactNode } from "react";
 
 interface Props {
   locked: boolean;
@@ -8,14 +8,14 @@ const ControllableUpdate: FC<Props> = ({ locked, children }) => {
   const childrenRef = useRef<ReactNode>(children);
   const lockedRef = useRef<boolean>(locked);
 
-  useEffect(() => {
-    if (locked !== lockedRef.current) {
-      childrenRef.current = children;
-      lockedRef.current = locked;
-    }
-  }, [children, locked]);
+  if (locked !== lockedRef.current) {
+    childrenRef.current = children;
+    lockedRef.current = locked;
+  } else if (!lockedRef.current) {
+    childrenRef.current = children;
+  }
 
-  return <>{childrenRef}</>;
+  return <>{childrenRef.current}</>;
 };
 
 export default ControllableUpdate;
