@@ -46,9 +46,14 @@
     "tsc-check": "npx tsc --noEmit",
     "lint": "eslint src/* --max-warnings 0",
     "check": "npm run format && npm run tsc-check && npm run lint && npm test",
-    "ts-declare": "tsc src/index.ts --declaration --emitDeclarationOnly --outfile index.d.ts",
+    "ts-declare": "tsc src/index.ts --declaration --emitDeclarationOnly --esModuleInterop --outfile dist/index.d.ts",
     "build": "npm run check && npm run bundle",
-    "prepare": "npm run build"
+    "prepare": "npm run build && npm run ts-declare"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run check",
+    }
   },
   "repository": {
     "type": "git",
