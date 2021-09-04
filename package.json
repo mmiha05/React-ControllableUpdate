@@ -50,11 +50,6 @@
     "build": "npm run check && npm run bundle",
     "prepare": "npm run build && npm run ts-declare"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run check"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mmiha05/React-ControllableUpdate.git"
