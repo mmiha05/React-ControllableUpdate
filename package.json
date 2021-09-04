@@ -27,6 +27,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.0",
     "jest": "^27.1.0",
     "prettier": "^2.3.2",
@@ -48,7 +49,7 @@
     "check": "npm run format && npm run tsc-check && npm run lint && npm test",
     "ts-declare": "tsc src/index.ts --declaration --emitDeclarationOnly --esModuleInterop --outfile dist/index.d.ts",
     "build": "npm run check && npm run bundle",
-    "prepare": "npm run husky-setup && npm run build && npm run ts-declare",
+    "prepare": "npm run husky-setup && npm run build && npm run ts-declare && husky install",
     "husky-setup": "npx husky-init && npx husky set .husky/pre-commit \"npx pretty-quick --staged\" && npx husky set .husky/pre-push \"npm run check\""
   },
   "repository": {

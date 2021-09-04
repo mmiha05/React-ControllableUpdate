@@ -3,18 +3,18 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: "production",
-  entry: path.join(__dirname, "src/index.ts"),
+  entry: path.join(__dirname, "src/index.tsx"),
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: ["ts-loader"],
       },
     ],
   },
   resolve: {
-    extensions: [".ts"],
+    extensions: [".ts", ".tsx"],
   },
   output: {
     path: path.join(__dirname, "dist"),
