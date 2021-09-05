@@ -1,22 +1,21 @@
-import React, { useRef, FC, ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 
 interface Props {
   locked: boolean;
+  children: ReactNode;
 }
 
-const ControllableUpdate: FC<Props> = ({ locked, children }) => {
-  const childrenRef = useRef<ReactNode>(children);
-  const lockedRef = useRef<boolean>(locked);
-
-  if (locked !== lockedRef.current) {
-    childrenRef.current = children;
-    lockedRef.current = locked;
-  } else if (!lockedRef.current) {
-    childrenRef.current = children;
-  }
-
-  return <>{childrenRef.current}</>;
+const ControllableUpdate: FC<Props> = ({ children }) => {
+  return <>{children}</>;
 };
 
-export default ControllableUpdate;
-export { ControllableUpdate };
+const Memoed = React.memo(ControllableUpdate, (prev, next) => {
+  if (next.locked) {
+    return true;
+  }
+
+  return next.locked !== prev.locked;
+});
+
+export default Memoed;
+export { Memoed as ControllableUpdate };

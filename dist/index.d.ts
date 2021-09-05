@@ -1,7 +1,8 @@
-import { FC } from "react";
+import React, { ReactNode } from "react";
 interface Props {
     locked: boolean;
+    children: ReactNode;
 }
-declare const ControllableUpdate: FC<Props>;
-export default ControllableUpdate;
-export { ControllableUpdate };
+declare const Memoed: React.NamedExoticComponent<Props>;
+export default Memoed;
+export { Memoed as ControllableUpdate };
