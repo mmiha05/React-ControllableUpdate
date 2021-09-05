@@ -20,7 +20,6 @@ module.exports = {
     path: path.join(__dirname, "dist"),
     filename: "index.js",
     libraryTarget: "umd",
-    globalThis: "this",
   },
   externals: {
     react: "commonjs react",
