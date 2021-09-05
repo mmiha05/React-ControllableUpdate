@@ -49,7 +49,7 @@
     "tsc-check": "npx tsc --noEmit",
     "lint": "eslint src/* --max-warnings 0",
     "check": "npm run format && npm run tsc-check && npm run lint && npm test",
-    "ts-declare": "tsc src/index.tsx --jsx react --allowUmdGlobalAccess --declaration --emitDeclarationOnly --esModuleInterop --outfile dist/index.d.ts",
+    "ts-declare": "tsc src/index.tsx --jsx react --allowUmdGlobalAccess --declaration --emitDeclarationOnly --esModuleInterop --outDir dist",
     "build": "npm run check && npm run bundle && npm run ts-declare",
     "prepare": "npm run husky-setup && npm run build && npm run ts-declare && husky install",
     "husky-setup": "npx husky-init && npx husky set .husky/pre-commit \"npx pretty-quick --staged\" && npx husky set .husky/pre-push \"npm run check\""
