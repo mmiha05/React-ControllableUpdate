@@ -1,4 +1,4 @@
-import { useRef, FC, ReactNode } from "react";
+import React, { useRef, FC, ReactNode } from "react";
 
 interface Props {
   locked: boolean;

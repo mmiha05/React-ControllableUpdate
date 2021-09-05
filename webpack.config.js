@@ -22,7 +22,7 @@ module.exports = {
     libraryTarget: "umd",
   },
   externals: {
-    react: "commonjs react",
+    react: "react",
   },
   optimization: {
     minimize: true,
