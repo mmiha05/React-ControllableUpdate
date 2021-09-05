@@ -7,7 +7,7 @@ A small wrapper for component for `React.memo` that prevents component from bein
 To use, simply import component and define if component should be updated via `locked` prop.
 
 ```tsx
-<ControllableUpdate locked={false}>// --- children ---</ControllableUpdate>
+<ControllableUpdate locked={false}>{/* --- children --- */}</ControllableUpdate>
 ```
 
 ### Component updates
