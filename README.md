@@ -17,7 +17,7 @@ Component will update if
 - `locked` prop is `true`
 - `locked` prop was `false` but then changed to `true`
 
-**Note**: Just like with `React.memo` children components will be updated if they're updated within their state
+**Note**: Just like with `React.memo` children components will be updated if they're updated within their state.
 
 ### Why not just use `React.memo`?
 
