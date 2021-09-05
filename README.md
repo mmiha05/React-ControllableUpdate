@@ -14,8 +14,8 @@ To use, simply import component and define if component should be updated via `l
 
 Component will update if
 
-- `locked` prop is `true`
-- `locked` prop was `false` but then changed to `true`
+- `locked` prop is `false`
+- `locked` prop was `true` but then changed to `false`
 
 **Note**: Just like with `React.memo` children components will be updated if they're updated within their state.
 
@@ -24,7 +24,7 @@ Component will update if
 Most of the times this would be good point but sometimes you might want advantages of this approach because:
 
 - If you want component memoized in just a single place, this will do.
-- If you do not want to pass all logic to props, this will do, you can calculate value `locked` prop easily.
+- If you do not want to pass all logic to props, this will do, you can calculate value of `locked` prop easily.
 - Allows just part/fragment of the component to be prevented from updating easily.
 
 ### License
