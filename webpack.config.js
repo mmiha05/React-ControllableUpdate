@@ -1,37 +1,31 @@
-const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-    mode: 'production',
-    entry: path.join(__dirname, 'src/index.js'),
-    module: {
-        rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: ['babel-loader']
-            }
-        ]
-    },
-    resolve: {     
-        extensions: ['.js']
-    },
-    output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'index.js',
-        libraryTarget: 'commonjs2'
-    },
-    externals: {
-        react: 'commonjs react'
-    },
-    optimization: {
-        minimize: true,
-        minimizer: [new UglifyJsPlugin({
-            uglifyOptions: {
-                output: {
-                    comments: false
-                }
-            }
-        })],
-    }     
-}
+  mode: "production",
+  entry: path.join(__dirname, "src/index.tsx"),
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ["ts-loader"],
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".ts", ".tsx"],
+  },
+  output: {
+    path: path.join(__dirname, "dist"),
+    filename: "index.js",
+    libraryTarget: "umd",
+  },
+  externals: {
+    react: "react",
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+};

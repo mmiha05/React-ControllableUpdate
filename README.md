@@ -1,47 +1,32 @@
 # React-ControllableUpdate
-Controll if component should be allowed to be updated - a replacement for shouldComponentUpdate for functional components
+
+A small wrapper for component for `React.memo` that prevents component from being updated.
 
 ### Usage
-To use, simply import component and define if component should be updated via `shouldUpdate` prop.
 
-Basic logic:
-```js
-  // Component won't be updated regardless state and props changes as long as shouldUpdate is false
-  <ControllableUpdate shouldUpdate={false}>
-    // ...children go here
-  </ControllableUpdate>
-```
+To use, simply import component and define if component should be updated via `locked` prop.
 
-Example, do not update component until user was fetched:
-```js
-import React, { useState, useEffect } from 'react'
-import {ControllableUpdate} from 'react-controllable-update'
-import {UserComponent, fetchUser} from 'users'
-
-const App () => {
-  const [userWasFetched, setUserFetchedState] = useState(false)
-  const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    fetchUser().then((user) => {
-      setUserFetchedState(true)
-      setUser(user)
-    })
-  }, [])
-
-  return (
-    <ControllableUpdate shouldUpdate={userWasFetched}>
-      <UserComponent user={user}/>
-    </ControllableUpdate>
-  )
-
-}
+```tsx
+<ControllableUpdate locked={false}>{/* --- children --- */}</ControllableUpdate>
 ```
 
 ### Component updates
+
 Component will update if
-* `shouldUpdate` prop is `true`
-* `shouldUpdate` prop was `false` but then changed to `true`
+
+- `locked` prop is `false`
+- `locked` prop was `true` but then changed to `false`
+
+**Note**: Just like with `React.memo` children components will be updated if they're updated within their state.
+
+### Why not just use `React.memo`?
+
+Most of the times this would be good point but sometimes you might want advantages of this approach because:
+
+- If you want component memoized in just a single place, this will do.
+- If you do not want to pass all logic to props, this will do, you can calculate value of `locked` prop easily.
+- Allows just part/fragment of the component to be prevented from updating easily.
 
 ### License
+
 This project is licensed under the MIT License. Copy of license can be found in repository root.
